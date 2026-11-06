@@ -1,0 +1,13 @@
+# HOM interferometer with a GeTe phase-change patch in one arm and realistic detectors
+modes: 2
+wavelength_nm: 1550
+materials: ../../data/materials.json
+elements:
+  - {type: waveguide, mode: 0, length_um: 100, n_eff: 2.4, loss_dB_per_cm: 2.0}
+  - {type: waveguide, mode: 1, length_um: 100, n_eff: 2.4, loss_dB_per_cm: 2.0}
+  - {type: pcm_segment, mode: 1, material: GeTe, x: 0.0, length_um: 1.0, confinement: 0.05, n_ref: 1.45}
+  - {type: coupler, modes: [0, 1], split: 0.5}
+source: {type: distinguishable, input_modes: [0, 1], delays_s: [0.0, 0.2e-12], sigma_omega: 2.0e12}
+detectors:
+  - {efficiency: 0.85, dark_mean: 1.0e-5, threshold: true}
+  - {efficiency: 0.85, dark_mean: 1.0e-5, threshold: true}

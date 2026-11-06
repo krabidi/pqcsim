@@ -1,0 +1,2 @@
+include bindings/*.cpp core/*.hpp core/*.cpp data/*.json
+recursive-include extern/pybind11/include *.h

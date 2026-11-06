@@ -1,0 +1,4 @@
+circuit:
+  - type: SPDCSource
+  - type: Beamsplitter
+  - type: Detector

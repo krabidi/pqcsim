@@ -1,0 +1,99 @@
+{
+  "_comment": "Optical, thermal and kinetic constants for the phase-change materials, with literature sources.",
+  "_sources": {
+    "Sb": "Aggarwal et al., Nano Lett. 22, 3532 (2022); Cheng et al., Sci. Adv. 7, eabd7097 (2021)",
+    "GeTe": "Park et al., Phys. Rev. B 80, 115209 (2009), Fig. 3(a) at ~0.8 eV; kinetics: Wuttig & Yamada, Nat. Mater. 6, 824 (2007)",
+    "GeSb4Te7": "Park et al., Phys. Rev. B 80, 115209 (2009), Fig. 3(d) at ~0.8 eV",
+    "GeSb2Te4": "Park et al., Phys. Rev. B 80, 115209 (2009), Fig. 3(c) at ~0.8 eV",
+    "GST225": "Xu et al., RSC Adv. 8, 21040 (2018), Fig. 4(f) at 1550 nm"
+  },
+  "materials": [
+    {
+      "name": "Sb",
+      "id": "Sb",
+      "display_name": "Elemental antimony (Sb)",
+      "active": {
+        "mode": "tabulated",
+        "lam_nm": [1400, 1550, 1700],
+        "n_am": [4.0, 4.0, 4.0],
+        "k_am": [0.61, 0.61, 0.61],
+        "n_cr": [4.0, 4.0, 4.0],
+        "k_cr": [2.81, 2.81, 2.81]
+      },
+      "thermal": { "rho": 6697.0, "cp": 207.0, "tau_th": 2e-08 },
+      "pcm": {
+        "T_cryst_min": 420.0, "T_reset_on": 700.0, "T_melt": 903.0,
+        "Ea_eV": 0.9, "k0": 1e13
+      },
+      "_T_set_target_avg": 500.0
+    },
+    {
+      "name": "GeTe",
+      "id": "GeTe",
+      "display_name": "alpha-GeTe (polycrystalline)",
+      "_note": "n,k from Park et al. PRB 80 Fig 3(a), eps->nk at ~0.8 eV. T_set=525K for analog LTP.",
+      "active": {
+        "mode": "constant",
+        "n_am": 3.64, "k_am": 0.48,
+        "n_cr": 4.48, "k_cr": 1.45
+      },
+      "thermal": { "rho": 6140.0, "cp": 220.0, "tau_th": 2e-08 },
+      "pcm": {
+        "T_cryst_min": 450.0, "T_reset_on": 670.0, "T_melt": 996.0,
+        "Ea_eV": 2.2, "k0": 1e25
+      },
+      "_T_set_target_avg": 525.0
+    },
+    {
+      "name": "GeSb4Te7",
+      "id": "GeSb4Te7",
+      "display_name": "Ge1Sb4Te7",
+      "_note": "n,k from Park et al. PRB 80 Fig 3(d), eps->nk at ~0.8 eV.",
+      "active": {
+        "mode": "constant",
+        "n_am": 3.62, "k_am": 0.82,
+        "n_cr": 5.89, "k_cr": 1.70
+      },
+      "thermal": { "rho": 6300.0, "cp": 205.0, "tau_th": 2e-08 },
+      "pcm": {
+        "T_cryst_min": 400.0, "T_reset_on": 750.0, "T_melt": 890.0,
+        "Ea_eV": 0.8, "k0": 1e13
+      },
+      "_T_set_target_avg": 500.0
+    },
+    {
+      "name": "GeSb2Te4",
+      "id": "GeSb2Te4",
+      "display_name": "Ge1Sb2Te4",
+      "_note": "n,k from Park et al. PRB 80 Fig 3(c), eps->nk at ~0.8 eV.",
+      "active": {
+        "mode": "constant",
+        "n_am": 3.10, "k_am": 0.63,
+        "n_cr": 5.04, "k_cr": 1.79
+      },
+      "thermal": { "rho": 6200.0, "cp": 200.0, "tau_th": 2e-08 },
+      "pcm": {
+        "T_cryst_min": 430.0, "T_reset_on": 800.0, "T_melt": 895.0,
+        "Ea_eV": 1.0, "k0": 1e13
+      },
+      "_T_set_target_avg": 500.0
+    },
+    {
+      "name": "GST225",
+      "id": "GST225",
+      "display_name": "Ge2Sb2Te5 (GST-225)",
+      "_note": "n,k from Xu et al. RSC Adv. 8, 21040 (2018) at 1550 nm. Fails: k_am too low.",
+      "active": {
+        "mode": "constant",
+        "n_am": 3.85, "k_am": 0.05,
+        "n_cr": 6.50, "k_cr": 0.90
+      },
+      "thermal": { "rho": 6150.0, "cp": 200.0, "tau_th": 2e-08 },
+      "pcm": {
+        "T_cryst_min": 430.0, "T_reset_on": 820.0, "T_melt": 900.0,
+        "Ea_eV": 1.1, "k0": 1e13
+      },
+      "_T_set_target_avg": 500.0
+    }
+  ]
+}
