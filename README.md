@@ -15,6 +15,13 @@ Every model is checked: against closed-form solutions and independent calculatio
 established external codes, and against published measurements in [docs/validation.md](docs/validation.md),
 including the comparisons that did **not** agree.
 
+![Crystal growth velocity vs temperature: model curves and published measurements](docs/figures/crystal_growth.png)
+
+*How fast the crystal grows at each temperature, for three materials, over 16 orders of magnitude. Lines are
+the model with each paper's own parameters (no fitting); markers are the values the papers measured. The
+step near 530 K is where the melt-quenched glass joins the supercooled liquid. Made by
+`examples/plot_crystal_growth.py`.*
+
 ## Highlights
 
 - **Numerical methods in Python/NumPy/SciPy**: thin-film transfer matrices, rigorous coupled-wave analysis
@@ -48,6 +55,7 @@ benchmark tests (they are skipped when missing).
 python3 examples/pcm_device_to_circuit.py      # device -> array -> classical/quantum circuit
 python3 examples/thermal_crosstalk.py          # simple vs diffusion heating, neighbour disturb vs pixel pitch
 python3 examples/hong_ou_mandel.py             # two-photon interference with the C++ engine
+python3 examples/plot_crystal_growth.py        # the figure above (needs matplotlib)
 python3 -c "from pqcsim.io.circuit_file import load_circuit; print(load_circuit('examples/circuits/hom_pcm.yaml').run())"
 ```
 
