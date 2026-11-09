@@ -11,9 +11,9 @@ laser light  ->  absorption in thin films  ->  heat flow  ->  melting / crystal 
      ->  arrays of pixels (write disturb between neighbours)  ->  optical circuits (classical and quantum)
 ```
 
-Every model is checked: against closed-form solutions and independent calculations in `tests/`, against
-established external codes, and against published measurements in [docs/validation.md](docs/validation.md),
-including the comparisons that did **not** agree.
+Every model is checked against published measurements (see [Validation](#validation)),
+against established external codes, and against closed-form solutions in `tests/`. The comparisons that did
+**not** agree are documented in [docs/validation.md](docs/validation.md) with the reason.
 
 ![Crystal growth velocity vs temperature: model curves and published measurements](docs/figures/crystal_growth.png)
 
@@ -21,6 +21,29 @@ including the comparisons that did **not** agree.
 the model with each paper's own parameters (no fitting); markers are the values the papers measured. The
 step near 530 K is where the melt-quenched glass joins the supercooled liquid. Made by
 `examples/plot_crystal_growth.py`.*
+
+## Validation
+
+Each model was compared with published experiments before it was trusted. The inputs always come from an
+independent source, never from fitting to the number being compared, and comparisons that disagree are
+reported with the reason rather than tuned away.
+
+| Against published measurements | Result |
+|---|---|
+| Crystal growth velocity (Salinga 2013, Orava 2012) | published values reproduced |
+| GST-on-silicon waveguide loss (Zheng 2018) | measurement reproduced within its error |
+| Thermal transient of a GST memory cell (Ríos 2015) | reproduced within ±2 K |
+| Femtosecond switching thresholds (Schlich 2015) | relative thresholds reproduced; absolute ones differ by about 2.6×, most likely the fluence calibration |
+
+| Against established codes | Agreement |
+|---|---|
+| Thin-film optics vs `tmm` | ≤ 1e-12 |
+| Heat conduction vs FiPy (NIST) | < 1 % of peak at all times |
+| Pixel-array optics vs grcwa | ≤ 1e-3 |
+| Multi-photon probabilities vs The Walrus, Perceval | ≤ 1e-10 |
+
+Full list, with the cases that failed and why: [docs/validation.md](docs/validation.md). The scripts that
+reproduce each comparison are in `validation/`.
 
 ## Highlights
 
@@ -72,22 +95,6 @@ python3 -c "from pqcsim.io.circuit_file import load_circuit; print(load_circuit(
 | Quantum | `quantum` | Fock states with loss and partial distinguishability, Gaussian sources, detectors |
 | Electronics | `electronics` | photodetector and amplifier noise, ADC, heaters, crosstalk compensation |
 | Analysis | `analysis` | fabrication Monte Carlo and yield, calibration fits, uncertainty and sensitivity |
-
-## Validation
-
-| Check | Result |
-|---|---|
-| Thin-film optics vs `tmm` | agreement ≤ 1e-12 |
-| Heat conduction vs FiPy (NIST) | < 1 % of peak at all times |
-| Pixel-array optics vs grcwa | ≤ 1e-3 |
-| Multi-photon probabilities vs The Walrus, Perceval | ≤ 1e-10 |
-| Crystal growth (Salinga 2013, Orava 2012) | published values reproduced |
-| GST-on-silicon waveguide loss (Zheng 2018) | measurement reproduced within its error |
-| Thermal transient of a GST memory cell (Ríos 2015) | reproduced within ±2 K |
-| Femtosecond switching thresholds (Schlich 2015) | relative thresholds reproduced |
-
-Full list, with the cases that failed and why: [docs/validation.md](docs/validation.md). The scripts that
-reproduce each comparison are in `validation/`.
 
 ## Quantum engine (C++)
 
